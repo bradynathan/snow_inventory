@@ -1,5 +1,5 @@
 ---
 collections:
-  - name: https://github.com/bradynathan/servicenow.itsm
+  - name: https://github.com/bradynathan/servicenow.itsm.git
     source: git
 ...
