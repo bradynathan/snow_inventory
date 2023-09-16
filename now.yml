@@ -1,1 +1,2 @@
 plugin: servicenow.itsm.now
+inventory_hostname_source: fqdn
