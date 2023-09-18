@@ -1,0 +1,30 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+  - name: Add database servers
+    servicenow.itsm.configuration_item:
+      name: 
+      short_description: 
+      serial_number:
+      asset_tag: 
+      sys_class_name: cmdb_ci_server
+      assigned_to:
+      environment: production
+      category: 
+      attachments:
+      - path: path/to/attachment.txt
+      other:
+        model_number: BL465C G7
+  register: server
+
+#  - name: Add application servers
+
+#  - name: Add middleware servers
+
+#  - name: Add web servers
+
+#  - name: Add general servers
+
+#  - name: Add workstations
+  
