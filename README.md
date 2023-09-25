@@ -24,11 +24,14 @@ Source Control Type `Git`
 Source Control URL `https://github.com/bradynathan/snow_inventory.git`
 Selec the source control credential from previous step
 
-# Create SNOW Credential Type
+## Create SNOW Credential Type
 
 Select `Credential Types` from the menu
 Click `Add`
 Name the `Credential Type` ServiceNow
+
+### Password Authentication Example:
+
 Input Configuration
 ```
 fields:
@@ -41,6 +44,29 @@ fields:
     label: Password
     secret: true
     help_text: Password used for authentication.
+  - id: host
+    type: string
+    label: Host
+    help_text: The ServiceNow host name including https://
+required:
+  - username
+  - password
+  - host
+```
+
+Injector Configuration:
+```
+env:
+  SN_HOST: '{{ host }}'
+  SN_PASSWORD: '{{ password }}'
+  SN_USERNAME: '{{ username }}'
+```
+
+### Oauth Authentication Example (NEEDS TESTED):
+
+Input Configuration
+```
+fields:
   - id: client_id
     type: string
     label: Client ID
@@ -58,15 +84,13 @@ fields:
     type: string
     label: Refresh Token
     help_text: Refresh token used for OAuth authentication.
-  - id: timeout
-    type: string
-    label: Timeout
-    help_text: Timeout in seconds for the connection with the ServiceNow instance.
   - id: grant_type
     type: string
     label: Grant Type
     help_text: Grant type used for OAuth authentication.
 required:
+  - client_secret
+  - client_id
   - host
 ```
 
@@ -74,13 +98,9 @@ Injector Configuration:
 ```
 env:
   SN_HOST: '{{ host }}'
-  SN_TIMEOUT: '{{ timeout }}'
-  SN_PASSWORD: '{{ password }}'
-  SN_USERNAME: '{{ username }}'
   SN_CLIENT_ID: '{{ client_id }}'
   SN_GRANT_TYPE: '{{ grant_type }}'
   SN_CLIENT_SECRET: '{{ client_secret }}'
   SN_REFRESH_TOKEN: '{{ refresh_token }}'
 ```
-
 
