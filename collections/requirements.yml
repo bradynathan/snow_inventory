@@ -2,5 +2,5 @@
 collections:
   - name: git+https://github.com/bradynathan/servicenow.itsm.git
     source: git
-    version: table_options
+    version: debug-feature
 ...
